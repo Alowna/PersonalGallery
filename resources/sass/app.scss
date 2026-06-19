@@ -1,0 +1,94 @@
+//Fundo em gradiente
+.bg-dark {
+       background: linear-gradient(
+        -45deg,
+        #ff0000,
+        #000000,
+        #050000,
+        #ff5a5a
+    );
+//chama keyframe gradient
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+//animação de gradiente
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+//importa fonte pixelify doto
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap');
+
+//importa bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+//importa bootstrap icons
+@import 'bootstrap-icons/font/bootstrap-icons.scss';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'devicon/devicon.min.css';
+
+//estilos de navbar
+.navbar-transparent {
+    background: transparent;
+    color: white;
+}
+
+.navbar-transparent .dropdown-menu {
+    background: transparent;
+    border-radius:1rem;
+    border: 0;
+    color: white;
+}
+.navbar-transparent .dropdown-item {
+    border-radius:1rem;
+    border: 0;
+    color: white;
+}
+
+.dropdown-item:hover{
+    background: transparent;
+}
+
+
+/* Ativa o efeito hover apenas em telas grandes (Desktop) */
+@media (min-width: 992px) {
+  
+  .navbar-nav .dropdown:hover > .dropdown-menu,
+  .navbar-nav .dropend:hover > .dropdown-menu,
+  .navbar-nav .dropdown-item:hover + .dropdown-menu,
+  .navbar-nav .dropdown-menu li:hover > .dropdown-menu {
+    display: block;
+  }
+
+  .navbar-nav .dropdown-menu .dropdown-menu {
+    top: 0;
+    right: 100%;
+    margin-top: -6px; 
+  }
+  .dropdown-menu{
+    padding-top:1rem;
+  }
+
+}
+
+
+
+body{
+    background-color: black;
+}
+
+header{
+    font-family: "Doto", sans-serif;
+    border-end-end-radius: 1rem;
+
+}
