@@ -1,0 +1,94 @@
+/*estilos de navbar */
+.navbar-transparent {
+    background: transparent;
+    color: white;
+}
+
+.navbar-transparent .dropdown-menu {
+    background: transparent;
+    border-radius:1rem;
+    border: 0;
+    color: white;
+}
+.navbar-transparent .dropdown-item {
+    border-radius:1rem;
+    border: 0;
+    color: white;
+}
+
+.dropdown-item:hover{
+    background: transparent;
+}
+
+/* Ativa o efeito hover apenas em telas grandes (Desktop) */
+@media (min-width: 992px) {
+  
+  .navbar-nav .dropdown:hover > .dropdown-menu,
+  .navbar-nav .dropend:hover > .dropdown-menu,
+  .navbar-nav .dropdown-item:hover + .dropdown-menu,
+  .navbar-nav .dropdown-menu li:hover > .dropdown-menu {
+    display: block;
+  }
+
+  .navbar-nav .dropdown-menu .dropdown-menu {
+    top: 0;
+    right: 100%;
+    margin-top: -6px; 
+  }
+  .dropdown-menu{
+    padding-top:1rem;
+  }
+
+}
+
+header{
+    font-family: "Doto", sans-serif;
+    border-radius: 0 0 0 1rem;
+}
+
+
+
+.bg-dark {
+       background: linear-gradient(
+        -45deg,
+        #ff0000,
+        #000000,
+        #050000,
+        #ff5a5a
+    );
+
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+footer{
+    font-family: "Doto" , sans-serif;
+    
+}
+
+.footer-container{
+    border-radius: 0rem 1rem 0 0;
+}
+
+.logout
+{
+    color: red
+}
+
+.login
+{
+    color: green;
+}

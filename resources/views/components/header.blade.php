@@ -1,4 +1,9 @@
+@push('styles')
+    @vite('resources/css/header.css')
+@endpush
+
 <header class="p-1 bg-dark text-white">
+
             <div class="d-flex justify-content-between">
                 <span class="m-0 h4">/alownaGallery</span>
                 
@@ -69,6 +74,28 @@
                                 <li class="nav-item">
                                     <a class="nav-link active text-white" aria-current="page" href="/">Gallery</a>
                                 </li>
+
+                                @auth
+                                    <li>
+                                        <form action="/logout" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn login">
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                @endauth
+
+                                @guest
+                                    <li>
+                                        <form action="/login" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn login">
+                                                Login
+                                            </button>
+                                        </form>
+                                    </li>
+                                @endguest
                             </ul>
 
 
@@ -81,3 +108,4 @@
                 
             </div>
         </header>
+

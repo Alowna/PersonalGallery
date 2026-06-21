@@ -8,6 +8,10 @@
         <link referrerpolicy="no-referrer" rel="icon" type="image/x-icon" href="https://i.imgur.com/7GZ13Uf.png">
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite('resources/css/app.css')
+        @vite('resources/css/headerFooter.css')
+        
+        
         @stack('styles')
     </head>
     <body class="d-flex flex-column min-vh-100">

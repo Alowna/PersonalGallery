@@ -20,15 +20,17 @@
                     </div>
 
                     <div class="col-12 col-md-6 loginform">
-                        <form action="/submit-login" method="POST">
+                        <form action="/login" method="POST">
+                            @csrf
+
 
                             <div class="mb-3">
                                 <input
-                                    type="text"
-                                    id="username"
-                                    name="username"
+                                    type="email"
+                                    id="email"
+                                    name="email"
                                     required
-                                    placeholder="Username"
+                                    placeholder="E-mail"
                                     class="custom-input">
                             </div>
 
@@ -47,6 +49,12 @@
                                 type="submit">
                                 Login
                             </button>
+                            @error('email')
+                            <p class="error">{{ $message }}</p>
+                            @enderror
+                            @error('password')
+                            <p class="error">{{ $message }}</p>
+                            @enderror
 
                         </form>
                     </div>
