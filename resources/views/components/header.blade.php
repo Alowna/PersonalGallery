@@ -77,7 +77,7 @@
 
                                 @auth
                                     <li>
-                                        <form action="/logout" method="POST">
+                                        <form action="{{Route('auth.logout')}}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn login">
                                                 Logout
@@ -88,7 +88,7 @@
 
                                 @guest
                                     <li>
-                                        <form action="/login" method="POST">
+                                        <form action="{{Route('site.login')}}" method="GET">
                                             @csrf
                                             <button type="submit" class="btn login">
                                                 Login

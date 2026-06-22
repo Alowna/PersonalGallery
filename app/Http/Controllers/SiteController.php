@@ -12,7 +12,7 @@ class SiteController extends Controller
 
     public function index()
     {
-        return view(view: '/dashboard');
+        return view(view: '/gallery');
     }
 }
 

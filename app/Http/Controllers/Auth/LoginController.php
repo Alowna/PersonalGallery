@@ -28,7 +28,7 @@ class LoginController extends Controller
             {
                 $request->session()->regenerate();
 
-                return redirect()->intended(default: '/');
+                return redirect()->intended(route('site.index'));
             }
 
 
@@ -47,7 +47,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect(route('site.index'));
     }
 
     
