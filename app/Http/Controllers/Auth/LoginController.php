@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -16,13 +18,10 @@ class LoginController extends Controller
         return view( view: 'login');
     }
     //POST /login
-    public function authenticate(Request $request)
+    public function authenticate(LoginRequest $request)
     {
         //dd($request->all());
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:3',
-        ]);
+        $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials))
             {
@@ -34,7 +33,7 @@ class LoginController extends Controller
 
         
             return back()->withErrors([
-                'email' , 'password' => 'Invalid Credentials',                 
+                'email' , 'password' => 'Credentials do not match our records',                 
             ]);
             
     }
@@ -50,5 +49,5 @@ class LoginController extends Controller
         return redirect(route('site.index'));
     }
 
-    
+
 }
