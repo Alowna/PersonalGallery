@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="col-12 col-md-6 loginform">
-                        <form action="/login" method="POST">
+                        <form action="{{route('auth.login')}}" method="POST">
                             @csrf
 
 
