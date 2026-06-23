@@ -55,9 +55,18 @@
                             @error('password')
                             <p class="error">{{ $message }}</p>
                             @enderror
-                            <a href="{{ route('site.register') }}" class="btn btn-link custom-btn w-100 mt-3">Don't have an account? Register</a>
+
+
 
                         </form>
+
+                        <form action="{{Route('site.register')}}" method="GET">
+                        @csrf
+                            <button type="submit" class="btn btn-link custom-btn w-100 mt-3">
+                                Don't have an account? Register
+                            </button>
+                        </form>
+                        
                     </div>
 
                 </div>
