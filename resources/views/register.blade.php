@@ -7,7 +7,7 @@
         <section class="ftco-section">
 
             <div class="container login">
-                <h1 class="text-center mb-4">/Welcome!</h1>
+                <h1 class="text-center mb-4">/Register!</h1>
 
                 <div class="row justify-content-center align-items-center entireform">
 
