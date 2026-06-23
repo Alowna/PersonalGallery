@@ -51,7 +51,7 @@
                                             <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Applications</a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                        <a href="https://github.com/Alowna/Calculadora" target="_blank" class="dropdown-item text-center" data-bs-toggle="dropdown">Calculator<br>
+                                                        <a href="https://github.com/Alowna/Calculadora" target="_blank" class="dropdown-item text-center" >Calculator<br>
                                                             <small>
                                                                 <i class="devicon-html5-plain colored" style="font-size: 1rem;"></i>
                                                                 <i class="devicon-css3-plain colored" style="font-size: 1rem;"></i>
