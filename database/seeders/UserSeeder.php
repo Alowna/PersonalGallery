@@ -15,9 +15,11 @@ class UserSeeder extends Seeder
     {
         //
         User::query()->create([
-            'name' => 'Alowna',
+            'username' => 'Alowna',
+            'name' => 'Alona',
             'email' => 'Alowna@test.com',
-            'password' => 123
+            'password' => '@SenhaDeTeste123',
+            'gender' => 'Female',
         ]);
     }
 }
