@@ -55,6 +55,7 @@
                             @error('password')
                             <p class="error">{{ $message }}</p>
                             @enderror
+                            <a href="{{ route('site.register') }}" class="btn btn-link custom-btn w-100 mt-3">Don't have an account? Register</a>
 
                         </form>
                     </div>
