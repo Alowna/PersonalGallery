@@ -124,3 +124,23 @@ h1 {
     font-style:oblique;
     font-family: 'Pixelify Sans';
 }
+
+.btn-link
+{
+    color: red;
+}
+
+option {
+  color: white;
+  background: black;
+}
+
+select {
+  color: white;
+  background: black;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-family: 'Pixelify Sans';
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
