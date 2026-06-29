@@ -29,14 +29,14 @@
                     
 
                     <div class="post-item d-flex flex-column align-items-start p-0 col">
-                        <div class="title">
-                            <p>{{ $post->title}}</p>
+                        <div>
+                            <p class="title mb-0">{{ $post->title}}</p>
                             @auth
                                 @if (auth()->user()->id === $post->user_id)
                                     <form action="{{ route('posts.destroy', $post) }}" method="POST" class="delete-form">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="delete-button m-2"><i class="bi bi-trash"></i></button>
+                                        <button type="submit" class="delete-button post m-2"><i class="bi bi-trash"></i></button>
                                     </form>
                                 @endif
                             @endauth
@@ -75,7 +75,7 @@
                                         <form action="{{ route('comments.destroy', $comment) }}" method="POST" class="delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="delete-button"><i class="bi bi-trash"></i></button>
+                                            <button type="submit" class="delete-button comment"><i class="bi bi-trash"></i></button>
                                         </form>
                                     @endif
                                 @endauth
