@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+
 
 class SiteController extends Controller
 {
@@ -12,12 +14,12 @@ class SiteController extends Controller
 
     public function index()
     {
-        return view(view: '/gallery');
+        $comments = Comment::with('user')->latest()->get();
+
+        return view('gallery', compact('comments'));
     }
+
 }
-
-
-
 
 
 
