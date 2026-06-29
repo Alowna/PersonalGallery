@@ -18,6 +18,7 @@ class CommentController extends Controller
         $user = $request->user(); // Get the authenticated user
         $comment = new Comment();
         $comment->user_id = $user->id; // Only works with middleware auth, otherwise it will throw an error
+        $comment->post_id = $request->input('post_id');
         $comment->content = $request->input('content');
         $comment->save();
 

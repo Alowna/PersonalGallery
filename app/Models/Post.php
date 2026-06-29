@@ -4,22 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\User;
-use App\Models\Post;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Comment extends Model
+use App\Models\User;
+use App\Models\Comment;
+
+
+class Post extends Model
 {
     protected $fillable = [
         'user_id',
+        'title',
         'content',
+        'image',
     ];
-
+    
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function post()
+
+    public function comments()
     {
-        return $this->belongsTo(Post::class);
+        return $this->hasMany(Comment::class);
     }
 }
