@@ -1,0 +1,148 @@
+input{
+    border-radius: 200px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: transparent;
+    color:white;
+
+}
+
+input[required]::placeholder{
+    color: white;
+}
+
+textarea{
+    border-radius: 200px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: transparent;
+    color:white;
+    resize: none;
+    scrollbar-width: none;
+    text-align:center;
+    padding: 12px 20px;
+
+}
+
+textarea[required]::placeholder{
+    color: white;
+    text-align:center;
+}
+
+textarea:invalid
+{
+    border-color: red;
+}
+
+
+.btn-post
+{
+    background-color: rgb(255, 150, 150);
+    
+    color: black;
+    border-radius: 200px;
+    
+    
+}
+
+.btn-post:hover{
+    color: white;
+    background-color: rgb(95, 209, 95);
+    
+}
+
+h3{
+    color: white;
+}
+
+
+
+
+
+.delete-button
+{
+    background-color: rgb(0, 0, 0);
+    
+    color: rgb(255, 255, 255);
+    border-radius: 200px;
+    font-size:  clamp(0.75rem, 2vw, 0.875rem);
+      
+}
+
+.delete-button:hover{
+    color: white;
+    background-color: rgb(255, 0, 0);
+    
+}
+
+.title
+{
+    color: white;
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border-style: solid;
+    border-color: red;
+    border-right: none;
+    border-left: none;
+}
+
+.post-content
+{
+    color:white;
+    text-align: start;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+
+}
+
+.created-at
+{
+    color: rgb(255, 255, 255);
+    text-align: end;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.post-item
+{
+    width: 10rem;
+    position:relative;
+    left:28%;
+}
+
+.comments
+{
+    width: 10rem;
+    position:relative;
+    left:50%;
+}
+
+button.btn.btn-comments.collapsed
+{
+    background-color: rgb(0, 0, 0);
+    
+    color: rgb(255, 255, 255);
+    border-radius: 200px;
+    font-size:  clamp(0.75rem, 2vw, 0.875rem);
+
+    position:absolute;
+    right: 80%;
+    top: 50%;
+}
+
+.btn-comments
+{
+    background-color: rgb(0, 0, 0);
+    
+    color: rgb(255, 255, 255);
+    border-radius: 200px;
+    font-size:  clamp(0.75rem, 2vw, 0.875rem);
+    margin-bottom:1rem;
+}
+
+.commentBox
+{
+    width: 10rem;
+    position:relative;
+    left:28%;
+    text-align: end;
+}
+
