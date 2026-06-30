@@ -13,7 +13,7 @@ use App\Models\Comment;
 class Post extends Model
 {
     protected $fillable = [
-        'user_id',
+        'api_id',
         'title',
         'content',
         'image',
