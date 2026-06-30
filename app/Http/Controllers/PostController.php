@@ -17,6 +17,7 @@ class PostController extends Controller
         $post->user_id = $user->id; // Only works with middleware auth, otherwise it will throw an error
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->image = $request->input('image'); // Get the image URL from the request
         $post->save();
 
         return redirect()->back()->with('success', 'Post added successfully.');
