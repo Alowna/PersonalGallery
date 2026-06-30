@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->bigInteger('api_id')->nullable()->after('id');
+            $table
+            ->bigInteger('api_id')
+            ->nullable()
+            ->after('id')
+            ->unique();
         });
     }
 
