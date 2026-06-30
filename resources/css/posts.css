@@ -1,211 +1,366 @@
-input{
-    border-radius: 200px;
-    border-style: solid;
-    border-color: transparent;
-    background-color: transparent;
-    color:white;
-
+/* =========================================
+   GLOBAL VARIABLES AND RESET
+   ========================================= */
+:root 
+{
+    --red-primary: #ff0a33;
+    --red-secondary: #c90022;
+    --bg-dark: #0f0f0f; 
+    --text-light: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.6);
 }
 
-input[required]::placeholder{
-    color: white;
+* {
+    font-family: 'Pixelify Sans', sans-serif !important;
 }
 
-textarea{
-    border-radius: 200px;
-    border-style: solid;
-    border-color: transparent;
-    background-color: transparent;
-    color:white;
+body, html 
+{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-dark);
+}
+
+@keyframes gradientShift 
+{
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   POST CREATION AREA
+   ========================================= */
+.create-post-wrapper 
+{
+    background: rgba(20, 20, 20, 0.5);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: clamp(1.5rem, 4vw, 2.5rem); 
+}
+
+.gradient-text 
+{
+    background: linear-gradient(90deg, var(--red-primary), #ff7a8e);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: clamp(1.75rem, 3vw, 2.5rem); 
+    font-weight: 800;
+    animation: gradientShift 4s ease infinite;
+}
+
+.create-post-form input, .create-post-form textarea 
+{
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.02);
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    color: var(--text-light);
+    border-radius: 0;
+    padding: 10px 15px;
+    font-size: clamp(1rem, 1.5vw, 1.125rem); 
+    transition: all 0.3s;
+}
+
+.create-post-form input:focus, .create-post-form textarea:focus 
+{
+    outline: none;
+    border-color: var(--red-primary);
+    background: transparent;
+}
+
+.create-post-form textarea 
+{ 
+    resize: none; 
+    min-height: 60px; 
+    scrollbar-width: none; 
+}
+
+.create-post-form textarea::-webkit-scrollbar 
+{ 
+    display: none; 
+}
+
+.btn-submit 
+{
+    background: linear-gradient(45deg, var(--red-secondary), var(--red-primary), #ff4d6d);
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+    color: white; border: none; border-radius: 30px;
+    padding: 10px 30px; 
+    font-size: clamp(1rem, 1.5vw, 1.125rem); 
+    font-weight: bold; cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-submit:hover 
+{ 
+    transform: translateY(-3px); 
+    color: white; 
+}
+
+.btn-submit.small 
+{ 
+    width: 42px; 
+    height: 42px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0; 
+    border-radius: 50%; 
+}
+
+/* =========================================
+   FULLSCREEN POST & DYNAMIC GRADIENT
+   ========================================= */
+.posts-feed-fullscreen 
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-fullscreen 
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh; 
+    height: auto; 
+    padding: clamp(2rem, 5vw, 4rem) 0;
+    box-sizing: border-box;
+    z-index: 1;
+    
+    --gradient-color: transparent;
+    --shadow-color: transparent; 
+}
+
+.post-fullscreen::before 
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, var(--gradient-color) 0%, var(--bg-dark) 95%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.post-fullscreen.bg-loaded::before 
+{
+    opacity: 1;
+}
+
+.post-header-floating 
+{
+    position: relative;
+    z-index: 2;
+}
+
+.post-title 
+{
+    font-size: clamp(2.5rem, 6vw, 4rem); 
+    color: var(--text-light);
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    opacity: 0.9;
+}
+
+.post-meta 
+{ 
+    color: var(--text-muted); 
+    font-size: clamp(0.9rem, 1.2vw, 1rem); 
+    letter-spacing: 1px; 
+}
+
+.post-content-text 
+{
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem); 
+    line-height: 1.8;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: pre-wrap;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+}
+
+.natural-image-container 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    height: 100%;
+}
+
+.floating-img 
+{
+    max-width: 50vw; 
+    max-height: 70vh; 
+    width: auto;
+    height: auto;
+    object-fit: contain; 
+    filter: drop-shadow(0 0 60px var(--shadow-color)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7)); 
+    border: none;
+    background: transparent;
+}
+
+/* =========================================
+   COMMENTS SECTION
+   ========================================= */
+.btn-toggle-comments 
+{
+    opacity: 0.7;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem); 
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.btn-toggle-comments:hover 
+{ 
+    opacity: 1; 
+    transform: translateX(-5px); 
+}
+
+.comments-container 
+{
+    display: none; 
+    opacity: 0;
+    transform: translateX(30px); 
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 100%;
+}
+
+.comments-container.show 
+{
+    display: block; 
+}
+
+.comments-container.visible 
+{
+    opacity: 1; 
+    transform: translateX(0); 
+}
+
+.comments-list 
+{ 
+    margin-bottom: 20px; 
+}
+
+.comment-item 
+{
+    margin-bottom: 24px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(255, 255, 255, 0.2); 
+}
+
+.comment-header strong 
+{ 
+    color: rgba(255, 255, 255, 0.9); 
+    font-size: clamp(0.9rem, 1vw, 1.1rem); 
+} 
+
+.comment-date 
+{ 
+    font-size: clamp(0.8rem, 0.9vw, 1rem); 
+    color: var(--text-muted); 
+} 
+
+.comment-text 
+{ 
+    font-size: clamp(1rem, 1.2vw, 1.2rem); 
+    color: rgba(255, 255, 255, 0.8); 
+    margin: 0; 
+    line-height: 1.5; 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+} 
+
+.add-comment-form textarea 
+{
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0;
     resize: none;
-    scrollbar-width: none;
-    text-align:center;
-    padding: 12px 20px;
-
+    height: 42px;
+    font-size: clamp(0.9rem, 1vw, 1rem); 
 }
 
-textarea[required]::placeholder{
-    color: white;
-    text-align:center;
+.add-comment-form textarea:focus 
+{ 
+    outline: none; 
+    border-color: var(--red-primary); 
 }
 
-textarea:invalid
+.add-comment-form textarea::-webkit-scrollbar 
+{ 
+    display: none; 
+}
+
+.add-comment-form textarea 
+{ 
+    scrollbar-width: none; 
+}
+
+.btn-delete 
+{ 
+    background: none; 
+    border: none; 
+    color: rgba(255, 77, 77, 0.6); 
+    cursor: pointer; 
+    font-size: 1rem; 
+    transition: 0.2s; 
+}
+
+.btn-delete:hover 
+{ 
+    transform: scale(1.2); 
+    color: #ff4d4d; 
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+@media (max-width: 991px) 
 {
-    border-color: red;
-}
-
-
-.btn-post
-{
-    background-color: rgb(255, 150, 150);
-    
-    color: black;
-    border-radius: 200px;
-    
-    
-}
-
-.btn-post:hover{
-    color: white;
-    background-color: rgb(95, 209, 95);
-    
-}
-
-h3{
-    color: white;
-}
-
-
-
-
-
-button.delete-button.post
-{
-    background-color: rgb(0, 0, 0);
-    
-    color: rgb(255, 255, 255);
-    border-radius: 200px;
-    font-size:  clamp(0.75rem, 2vw, 0.875rem);
-    position: relative;
-    left: 120%;
-}
-
-button.delete-button.comment
-{
-    background-color: rgb(0, 0, 0);
-    
-    color: rgb(255, 255, 255);
-    border-radius: 200px;
-    font-size:  clamp(0.75rem, 2vw, 0.875rem);
-    position: relative;
-    left: 80%;
-}
-
-.delete-button:hover{
-    color: white;
-    background-color: rgb(255, 0, 0);
-    
-}
-
-.title
-{
-    color: white;
-    text-align: center;
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    border-style: solid;
-    border-color: red;
-    border-right: none;
-    border-left: none;
-}
-
-.post-content
-{
-    color:white;
-    text-align: start;
-    font-size: clamp(0.875rem, 2vw, 1rem);
-
-}
-
-.created-at
-{
-    color: rgb(255, 255, 255);
-    text-align: end;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-}
-
-.post
-{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.post-item
-{
-    width: 100%;
-    max-width: 100%;
-    position: static;
-    left: auto;
-}
-
-.comments
-{
-    width: 100%;
-    max-width: 100%;
-    position: static;
-    left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-button.btn.btn-comments.collapsed
-{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 200px;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    position: static;
-    right: auto;
-    top: auto;
-    margin-bottom: 0.75rem;
-}
-
-.btn-comments
-{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 200px;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    margin-bottom: 0.75rem;
-}
-
-.commentBox
-{
-    width: 100%;
-    max-width: 100%;
-    position: static;
-    left: auto;
-    text-align: left;
-}
-
-@media (max-width: 960px)
-{
-    .post-item,
-    .comments,
-    .commentBox
-    {
-        position: static;
-        left: auto;
-        right: auto;
-        top: auto;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 0 1rem 0;
-        text-align: left;
+    .post-fullscreen 
+    { 
+        min-height: auto; 
+        padding: clamp(3rem, 8vw, 5rem) 0; 
     }
 
-    button.delete-button.post,
-    button.delete-button.comment
+    .post-fullscreen::before 
     {
-        position: static;
-        left: auto;
-        margin: 0 0 1rem 0;
+        background: radial-gradient(circle at 50% 30%, var(--gradient-color) 0%, var(--bg-dark) 90%);
+    }
+    
+    .floating-img 
+    {
+        max-width: 85vw;
+        max-height: 50vh;
     }
 
-    button.btn.btn-comments.collapsed,
-    .btn-comments
-    {
-        position: static;
-        right: auto;
-        top: auto;
-        margin: 0 0 1rem 0;
+    .content-col, .comments-col 
+    { 
+        text-align: center !important; 
     }
-
-    .created-at
-    {
-        text-align: left;
+    
+    .comments-container 
+    { 
+        transform: translateY(20px); 
+    }
+    
+    .comments-container.visible 
+    { 
+        transform: translateY(0); 
+    }
+    
+    .btn-toggle-comments 
+    { 
+        text-align: center !important; 
     }
 }
