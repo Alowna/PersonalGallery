@@ -83,12 +83,16 @@ footer{
     border-radius: 0rem 1rem 0 0;
 }
 
-.logout
+button.btn.logout
 {
-    color: red
+    color: red;
+    background-color: white;
+    border-radius: 5rem;
 }
 
-.login
+button.btn.login
 {
     color: green;
+    background-color: white;
+    border-radius: 5rem;
 }

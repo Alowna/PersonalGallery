@@ -1,5 +1,5 @@
 @push('styles')
-    @vite('resources/css/header.css')
+    @vite('resources/css/headerFooter.css')
 @endpush
 
 <header class="p-1 bg-dark text-white">
@@ -79,8 +79,8 @@
                                     <li>
                                         <form action="{{Route('auth.logout')}}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn login">
-                                                Logout
+                                            <button type="submit" class="btn logout" title="Log Out">
+                                                <i class="bi bi-door-open-fill"></i>
                                             </button>
                                         </form>
                                     </li>
@@ -90,8 +90,8 @@
                                     <li>
                                         <form action="{{Route('site.login')}}" method="GET">
                                             @csrf
-                                            <button type="submit" class="btn login">
-                                                Login
+                                            <button type="submit" class="btn login" title="Log In">
+                                                <i class="bi bi-door-open-fill"></i>
                                             </button>
                                         </form>
                                     </li>
