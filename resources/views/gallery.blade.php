@@ -4,13 +4,7 @@
 
 <x-layout>
     <main class="flex-grow-1">
-        @guest
-            <h1>Gallery</h1>
-        @endguest
 
-        @auth
-            <h1>Enjoy the gallery, {{ auth()->user()->name}}!</h1>
-        @endauth
         
     <x-posts :posts="$posts" :comments="$comments" />
            

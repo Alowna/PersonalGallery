@@ -4,23 +4,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
-<div class="create-post-wrapper container my-5">
-    @auth
-        <form action="{{ route('posts.store') }}" method="POST" class="create-post-form">
-            @csrf
-            <h3 class="gradient-text text-center">Create a post!</h3>
-            <div class="d-flex flex-column align-items-center w-100 gap-3">
-                <input type="text" name="title" placeholder="Write a title..." required>
-                <textarea name="content" placeholder="Write a post..." maxlength="254" required></textarea>
-                <input type="text" name="image" placeholder="Send Image Url(optinal)">
-                <button type="submit" class="btn-submit mt-2" aria-label="Submit post">
-                    <i class="bi bi-send"></i> Send
-                </button>
-            </div>
-        </form>
-    @endauth
-</div>
-
 <div class="posts-feed-fullscreen">
     @foreach ($posts as $post)
         <article class="post-fullscreen d-flex flex-column justify-content-center" id="post-{{ $post->id }}">
@@ -28,20 +11,9 @@
             <header class="post-header-floating mb-5 text-center mt-4">
                 <h2 class="post-title">{{ $post->title }}</h2>
                 <div class="post-meta d-flex justify-content-center gap-3">
-                    <span class="author"><i class="bi bi-person"></i> {{ $post->user->username }}</span>
-                    <span class="date"><i class="bi bi-clock"></i> {{ $post->created_at->format('F j, Y, g:i a') }}</span>
                     
-                    @auth
-                        @if (auth()->user()->id === $post->user_id)
-                            <form action="{{ route('posts.destroy', $post) }}" method="POST" class="m-0 p-0">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn-delete" title="Delete Post" aria-label="Delete post">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
-                        @endif
-                    @endauth
+                    <span class="date"><i class="bi bi-clock"></i> {{ $post->created_at->format('F j, Y, g:i a') }}</span>
+                
                 </div>
             </header>
 
