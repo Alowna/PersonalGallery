@@ -26,17 +26,17 @@ class SyncPosts extends Command
             $this->error('API error');
             return;
         }
-
-        $posts = $response->json();
+ 
+        $apiPosts = $response->json();
        
-        foreach ($posts as $item) {
+        foreach ($apiPosts as $apiPost) {
 
             Post::updateOrCreate(
-                ['api_id' => $item['post_id']],
+                ['api_id' => $apiPost['post_id']],
                 [
-                    'title'   => $item['title'],
-                    'content' => $item['content'],
-                    'image'   => $item['image'],
+                    'title'   => $apiPost['title'],
+                    'content' => $apiPost['content'],
+                    'image'   => $apiPost['image'],
                 ]
             );
         }
