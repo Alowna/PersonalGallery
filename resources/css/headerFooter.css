@@ -88,11 +88,29 @@ button.btn.logout
     color: red;
     background-color: white;
     border-radius: 5rem;
+    transition: all 0.3s ease;
 }
 
 button.btn.login
 {
     color: green;
     background-color: white;
+    border-radius: 5rem;
+    transition: all 0.3s ease;
+}
+
+button.btn.logout:hover
+{
+    transform: scale(1.5); 
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 5rem;
+}
+
+button.btn.login:hover
+{
+    transform: scale(1.5); 
+    color: rgb(255, 255, 255);
+    background-color: transparent;
     border-radius: 5rem;
 }
