@@ -10,11 +10,7 @@
             
             <header class="post-header-floating mb-5 text-center mt-4">
                 <h2 class="post-title">{{ $post->title }}</h2>
-                <div class="post-meta d-flex justify-content-center gap-3">
-                    
-                    <span class="date"><i class="bi bi-clock"></i> {{ $post->created_at->format('F j, Y, g:i a') }}</span>
-                
-                </div>
+
             </header>
 
             <div class="container-fluid px-3 px-xl-5 w-100 flex-grow-1 d-flex align-items-center pb-5">

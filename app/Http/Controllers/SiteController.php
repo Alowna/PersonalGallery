@@ -15,7 +15,7 @@ class SiteController extends Controller
 
     public function index()
     {
-        $posts = Post::with('user')->latest()->get();
+        $posts = Post::with('user')->get();
         $comments = Comment::with('user')->latest()->get();
 
         return view('gallery', compact('posts', 'comments'));

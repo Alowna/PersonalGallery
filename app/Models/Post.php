@@ -19,6 +19,9 @@ class Post extends Model
         'image',
     ];
     
+    public $timestamps = false;
+
+    
     public function user()
     {
         return $this->belongsTo(User::class);
